@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+bool isPalRec(char str[], int s, int e)
+{
+    if (s == e)
+      return true;
+
+    if (str[s] != str[e])
+      return false;
+
+    if (s < e + 1)
+      return isPalRec(str, s + 1, e - 1);
+ 
+    return true;
+}
+ 
+bool checkPalindrome(char str[])
+{
+   int n = 0;
+   for(int i = 0; str[i] != '\0'; i++){
+      n++;
+   }
+    if (n == 0)
+        return true;
+     
+    return isPalRec(str, 0, n - 1);
+}
+
+int main() {
+    char input[50];
+    cin >> input;
+    
+    if(checkPalindrome(input)) {
+        cout << "true" << endl;
+    }
+    else {
+        cout << "false" << endl;
+    }
+}
