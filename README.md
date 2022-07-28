@@ -1,2 +1,2 @@
 # Coding-Ninjas-DSA-CPP
-This repo contains solutions to problem of data structures in C++
+This repo contains solutions to problem of DSA in C++
