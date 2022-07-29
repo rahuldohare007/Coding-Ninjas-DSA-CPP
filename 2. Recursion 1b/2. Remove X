@@ -1,0 +1,36 @@
+Given a string, compute recursively a new string where all 'x' chars have been removed.
+
+#include <iostream>
+using namespace std;
+
+void removeX1(char input[],int s,int e){
+    if(s==e){
+        return;
+    }
+    if(input[s]=='x')
+    {
+        for(int i=s;i<e;i++)
+        {
+            input[i]=input[i+1];
+        }
+        e=e-1;
+    }
+     else 
+        s++;  
+    removeX1(input,s,e);
+    
+}
+void removeX(char input[]) {
+    int  n=0;
+    for(int i=0;input[i] != '\0'; i++){
+        n++;
+    }
+    removeX1(input,0,n);
+}
+
+int main() {
+    char input[100];
+    cin.getline(input, 100);
+    removeX(input);
+    cout << input << endl;
+}
