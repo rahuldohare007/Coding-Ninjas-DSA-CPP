@@ -1,0 +1,32 @@
+Given a string S, compute recursively a new string where identical chars that are adjacent in the original string are separated from each other by a "*".
+
+#include <iostream>
+using namespace std;
+
+void pairStar1(char input[], int s){
+    if(s==0){
+        return;
+    }
+    if(input[0]==input[1]){
+        for(int i=s; i>0; i--){
+            input[i+1]=input[i];
+        }
+        input[1]='*';
+        s=s+1;
+    }
+    pairStar1(input+1,s-1);
+}
+void pairStar(char input[]) {
+    int n=0;
+    for(int i=0;input[i] != '\0'; i++){
+        n++;
+    }
+    pairStar1(input,n);
+}
+
+int main() {
+   char input[100];
+   cin.getline(input, 100);
+   pairStar(input);
+   cout << input << endl;
+}
