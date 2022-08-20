@@ -45,9 +45,12 @@ Sample Output 2:
 */
 
 #include <queue>
+#include <stack>
 
 void reverseQueue(queue<int> &input) {
-	if(input.size()<=0)
+    
+    //1. Recursion O(n)
+    if(input.size()<=0)
         return;
     
     int x = input.front();
@@ -55,4 +58,15 @@ void reverseQueue(queue<int> &input) {
     reverseQueue(input);
     
     input.push(x);
+	
+    //2. Using Stack O(n)
+    stack<int> Stack;
+    while (!input.empty()) {
+        Stack.push(input.front());
+        input.pop();
+    }
+    while (!Stack.empty()) {
+        input.push(Stack.top());
+        Stack.pop();
+    }
 }
