@@ -38,7 +38,7 @@ Step 3 : n = 2 / 2 = 1
 // Brute Force
 int countMinStepsToOne(int n)
 {
-	  if(n == 1){
+    if(n == 1){
         return 0;
     }
     int x = INT_MAX, y = INT_MAX, z = INT_MAX;
@@ -84,10 +84,9 @@ int countMinStepsToOne(int n){
 #include<bits/stdc++.h>
 int countMinStepsToOne(int n, int *arr)
 {
-    if(n == 1)
+    if(n <= 1)
     {
-        arr[n] = 0;
-        return arr[n];
+        return 0;
     }
     int a=INT_MAX, b=INT_MAX, c=INT_MAX;
  
@@ -109,7 +108,7 @@ int countMinStepsToOne(int n, int *arr)
 
 int countMinStepsToOne(int n){
 
-    if(n==1)
+    if(n == 1)
       return 0;
     
     int *ans = new int[n+1];
