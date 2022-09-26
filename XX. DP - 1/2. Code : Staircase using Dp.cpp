@@ -41,6 +41,7 @@ Sample output 2:
 #include<bits/stdc++.h>
 using namespace std;
 
+// 1.
 typedef long long int ll;
 const ll m = 1e9 + 7;
 
@@ -72,4 +73,34 @@ int main(){
     }
 
     return 0;
+}
+
+// 2.
+long long mod = 1e9 + 7;
+
+int stairCase(int n){
+    if(n <= 1){
+        return 1;
+    }
+    
+    long long a = 1, b = 1, c = 2;
+    
+    for(int i=0; i<= n-3; i++){
+        long long d = (a + b + c) % mod;
+        a = b;
+        b = c;
+        c = d;
+    }
+    
+    return c;
+}
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        cout<<stairCase(n)<<endl;
+    }
 }
