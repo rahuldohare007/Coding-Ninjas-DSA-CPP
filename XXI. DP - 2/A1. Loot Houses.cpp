@@ -30,15 +30,15 @@ Looting first, third, and the last houses([10 + 30 + 50]) will result in the max
 // Dynamic Programming
 int maxMoneyLooted(int *arr, int n)
 {
-	int *output = new int[n];
+    int *output = new int[n];
 	
-  output[0] = arr[0];
-	output[1] = max(arr[0], arr[1]);
+    output[0] = arr[0];
+    output[1] = max(arr[0], arr[1]);
 	
-  for (int i = 2; i < n; i++)
-	  output[i] = max(output[i - 1], output[i - 2] + arr[i]);
+    for (int i = 2; i < n; i++)
+      output[i] = max(output[i - 1], output[i - 2] + arr[i]);
 	
-  return output[n - 1];
+    return output[n - 1];
 }
 
 //  Brute Force (Recursive)
