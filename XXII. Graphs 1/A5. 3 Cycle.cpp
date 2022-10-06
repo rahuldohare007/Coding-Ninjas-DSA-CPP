@@ -29,6 +29,7 @@ Sample Output 1:
 #include <iostream>
 using namespace std;
 
+//  1.
 int countCycles(bool **arr, long long n)
 {
     int count = 0;
@@ -75,4 +76,48 @@ int main() {
     }
     cout << countCycles(edges, v) / 6;
     return 0;
+}
+
+//  2.
+#include <iostream>
+using namespace std;
+
+int getCycles(bool **graph, int v){
+    int cycleCount = 0;
+    
+    for(int i = 0 ; i < v - 2; i++){
+        for(int j = i + 1; j < v - 1; j++){
+            for(int k = j + 1; k < v; k++){
+                if(graph[i][j] && graph[j][k] & graph[k][i]){
+                    ++cycleCount;
+                }
+            }
+        }
+    }
+    
+    return cycleCount;
+}
+
+int main(){
+    int v, e;
+    cin >> v >> e;
+    bool **graph = new bool *[v];
+    for (long long i = 0; i < v; i++)
+    {
+        graph[i] = new bool[v]();
+    }
+    
+    for(int i = 0; i < e; i++){
+		int start, end;
+        cin >> start >> end;
+        graph[start][end] = true;
+        graph[end][start] = true;
+    }
+    
+    cout << getCycles(graph, v);
+    
+    for(int i = 0; i < v; i++){
+        delete[] graph[i];
+    }
+    delete[] graph;
 }
